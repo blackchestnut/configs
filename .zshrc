@@ -46,7 +46,7 @@ export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/share/
 #export CC=clang
 # RVM
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-source /Users/morr/.rvm/scripts/rvm
+source /Users/bch/.rvm/scripts/rvm
 # mysqlfix
 DYLD_LIBRARY_PATH="/usr/local/mysql/lib:$DYLD_LIBRARY_PATH"
 
