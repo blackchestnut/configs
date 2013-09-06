@@ -61,7 +61,8 @@ alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %
 alias gput="git push origin HEAD"
 #alias gup="git pull --rebase --stat"
 alias gup="git-up" # https://github.com/aanand/git-up
-alias ll='ls -l'
+alias ll='ls -la'
+alias l='ls -a'
 #alias hetzner='ssh -t morr@178.63.23.138 zsh'
 alias files='find . -maxdepth 1 -type f | wc -l'
 alias update='git add -A && git commit -m "updates"'
