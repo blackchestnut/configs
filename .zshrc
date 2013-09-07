@@ -16,7 +16,7 @@ ZSH_THEME="robbyrussell"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
-CASE_SENSITIVE="true"
+# CASE_SENSITIVE="true"
 
 # Comment this out to disable weekly auto-update checks
 # DISABLE_AUTO_UPDATE="true"
@@ -33,7 +33,7 @@ CASE_SENSITIVE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(rails3 ruby bundler capistrano gem osx zeus rvm ssh-agent rake brew command-not-found compleat composer cp history history-substring-search git-remote-branch git git-flow git-extras github pow)
+plugins=(rails4 rails3 ruby bundler capistrano gem osx zeus rvm ssh-agent rake brew command-not-found compleat composer cp history history-substring-search git-remote-branch git git-flow git-extras github pow)
 
 HISTSIZE=100000
 HISTFILESIZE=200000
@@ -50,7 +50,14 @@ source /Users/bch/.rvm/scripts/rvm
 # mysqlfix
 DYLD_LIBRARY_PATH="/usr/local/mysql/lib:$DYLD_LIBRARY_PATH"
 
-alias job="cd ~/Develop/ClickaviaRails/"
+# projects workflow
+alias mlrs="cd ~/projects/mlrs"
+alias news="cd ~/projects/news25km"
+alias mybudget="cd ~/projects/mybudget"
+cd_projects() {
+  cd ~/projects/$1
+}
+alias pr=cd_projects
 
 alias psf='ps aux|grep $1'
 alias r='rails'
