@@ -61,13 +61,14 @@ alias pr=cd_projects
 
 alias psf='ps aux|grep $1'
 alias r='rails'
+alias migrate='rake db:migrate && rake db:test:load'
 alias g='git status'
+alias gd='git diff head --color'
 alias finalize='git rebase --interactive --autosquash develop'
 #alias gl='git log --pretty=format:"%Cred%h%Creset %ad | %s%d [%an]" --graph --date=short'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias gput="git push origin HEAD"
-#alias gup="git pull --rebase --stat"
-alias gup="git-up" # https://github.com/aanand/git-up
+alias gu="git-up" # https://github.com/aanand/git-up
 alias ll='ls -la'
 alias l='ls -a'
 #alias hetzner='ssh -t morr@178.63.23.138 zsh'
