@@ -4,6 +4,7 @@ export LANGUAGE="en_US:en"
 export LC_MESSAGES="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
+export NODE_PATH=/usr/local/lib/node_modules
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -33,7 +34,7 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(rails4 rails3 ruby bundler capistrano gem osx zeus rvm ssh-agent rake brew command-not-found compleat composer cp history history-substring-search git-remote-branch git git-flow git-extras github pow)
+plugins=(rails ruby bundler capistrano gem osx zeus rvm ssh-agent rake brew command-not-found compleat composer cp history history-substring-search git-remote-branch git git-flow git-extras github pow)
 
 HISTSIZE=100000
 HISTFILESIZE=200000
@@ -46,7 +47,7 @@ export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/share/
 #export CC=clang
 # RVM
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-source /Users/bch/.rvm/scripts/rvm
+source $HOME/.rvm/scripts/rvm
 # mysqlfix
 DYLD_LIBRARY_PATH="/usr/local/mysql/lib:$DYLD_LIBRARY_PATH"
 
@@ -54,6 +55,7 @@ DYLD_LIBRARY_PATH="/usr/local/mysql/lib:$DYLD_LIBRARY_PATH"
 alias mlrs="cd ~/projects/mlrs"
 alias news="cd ~/projects/news25km"
 alias mybudget="cd ~/projects/mybudget"
+alias shi="cd ~/projects/shikimori.org/shikimori"
 cd_projects() {
   cd ~/projects/$1
 }
@@ -71,12 +73,11 @@ alias gput="git push origin HEAD"
 alias gu="git-up" # https://github.com/aanand/git-up
 alias ll='ls -la'
 alias l='ls -a'
-#alias hetzner='ssh -t morr@178.63.23.138 zsh'
 alias files='find . -maxdepth 1 -type f | wc -l'
 alias update='git add -A && git commit -m "updates"'
 alias bugfix='git add -A && git commit -m "bugfixes"'
-#alias deploy='git push origin master && git push origin develop && cap deploy'
-alias deploy='git push origin develop && cap production deploy'
+alias deploy='cap deploy'
+alias linode='ssh deploy@mybudget.ws'
 
 fpath=(path/to/zsh-completions/src $fpath)
 zstyle ':completion:*:processes' command 'ps -ax'
@@ -114,3 +115,4 @@ alias gbdf=git_delete_branch_force
 rvm use default
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 #EDITOR=/usr/local/Cellar/macvim/7.3-65/MacVim.app/Contents/MacOS/MacVim
+export PATH=/usr/local/bin:$PATH
