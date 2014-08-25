@@ -100,6 +100,12 @@ myfind() {
 alias f=myfind
 #alias fvim="mvim \`myfind $1\`"
 
+fgrep_rails_proj() {
+  fgrep -i -r $1 **/*.{rb,slim,coffee}
+}
+alias ff=fgrep_rails_proj
+
+
 git_delete_branch() {
   git branch -d $1 && git push origin :$1
 }
