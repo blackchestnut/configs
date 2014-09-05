@@ -63,16 +63,19 @@ alias pr=cd_projects
 
 alias psf='ps aux|grep $1'
 alias r='rails'
-alias migrate='rake db:migrate && rake db:test:load'
-alias g='git status'
-alias gd='git diff head --color'
-alias finalize='git rebase --interactive --autosquash develop'
+alias migrate='rake db:migrate && rake db:migrate RAILS_ENV=test'
+alias bi='bundle install'
 #alias gl='git log --pretty=format:"%Cred%h%Creset %ad | %s%d [%an]" --graph --date=short'
+alias g='git status'
+alias gs=g
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s - %C(bold blue)%an%Creset, %Cgreen%cr' --abbrev-commit"
-alias gput="git push origin HEAD"
+alias gd="git diff head --color"
+alias gdh="git diff head~1 --color"
+alias gp="git push origin HEAD"
 alias gu="git-up" # https://github.com/aanand/git-up
+alias migrate="rake db:migrate && rake db:migrate RAILS_ENV=test"
 alias ll='ls -la'
-alias l='ls -a'
+alias l=ll
 alias files='find . -maxdepth 1 -type f | wc -l'
 alias update='git add -A && git commit -m "updates"'
 alias bugfix='git add -A && git commit -m "bugfixes"'
@@ -101,7 +104,7 @@ alias f=myfind
 #alias fvim="mvim \`myfind $1\`"
 
 fgrep_rails_proj() {
-  fgrep -i -r $1 **/*.{rb,slim,coffee}
+  fgrep -i -r $1 **/*.{rb,slim,coffee,sass}
 }
 alias ff=fgrep_rails_proj
 
