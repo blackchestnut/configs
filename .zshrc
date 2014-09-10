@@ -64,6 +64,7 @@ alias pr=cd_projects
 alias psf='ps aux|grep $1'
 alias r='rails'
 alias migrate='rake db:migrate && rake db:migrate RAILS_ENV=test'
+alias rollback='rake db:rollback && rake db:rollback RAILS_ENV=test'
 alias bi='bundle install'
 #alias gl='git log --pretty=format:"%Cred%h%Creset %ad | %s%d [%an]" --graph --date=short'
 alias g='git status'
