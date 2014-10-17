@@ -104,6 +104,11 @@ fgrep_rails_proj() {
 }
 alias ff=fgrep_rails_proj
 
+port_lock() {
+  lsof -i tcp:$1
+}
+alias plock=port_lock
+
 rvm use default
 #EDITOR=/usr/local/Cellar/macvim/7.3-65/MacVim.app/Contents/MacOS/MacVim
 export PATH=/usr/local/bin:$PATH
