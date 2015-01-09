@@ -42,20 +42,35 @@ TERM="xterm-256color"
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
-export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/share/npm/bin
 #export CC=clang
+export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/share/npm/bin
+#export PATH=/usr/local/bin:$PATH
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export GITHUB_CLIENT_ID='...' # Agile Season App
+export GITHUB_CLIENT_SECRET='...' # Agile Season App
+export BACKUP_DROPBOX_API_KEY='...' # Dropbox App for backups
+export BACKUP_DROPBOX_API_SECRET='...' # Dropbox App for backups
+export GOPATH=$HOME/go # Go Workspaces
+export PATH=$PATH:$GOPATH/bin # Add Go bins to PATH for installed golang-programms
 
 # My projects
-alias news="cd ~/projects/news25km"
-alias mybudget="cd ~/projects/mybudget"
+RALSPROJECTS="~/projects"
+alias news="cd $RALSPROJECTS/news25km"
+alias mybudget="cd $RALSPROJECTS/mybudget"
 alias my=mybudget
-alias shi="cd ~/projects/shikimori.org/shikimori"
-alias vi="cd ~/projects/vimocean"
+alias shi="cd $RALSPROJECTS/shikimori.org/shikimori"
+alias vi="cd $RALSPROJECTS/vimocean"
+alias ag="cd $RALSPROJECTS/agileseason"
+alias mygo="cd $GOPATH/src/github.com/blackchestnut"
 cd_projects() {
   cd ~/projects/$1
 }
 alias pr=cd_projects
+
+# My Servers
+alias linode='ssh deploy@mybudget.ws'
+alias linode2='ssh deploy@173.255.204.93'
+alias shikimori='ssh devops@78.46.50.20'
 
 # Git
 alias g='git status'
@@ -111,8 +126,3 @@ alias plock=port_lock
 
 rvm use default
 #EDITOR=/usr/local/Cellar/macvim/7.3-65/MacVim.app/Contents/MacOS/MacVim
-export PATH=/usr/local/bin:$PATH
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-export GOPATH=$HOME/go # Go Workspaces
-export PATH=$PATH:$GOPATH/bin # Add Go bins to PATH for installed golang-programms
