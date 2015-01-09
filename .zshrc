@@ -115,3 +115,4 @@ export PATH=/usr/local/bin:$PATH
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export GOPATH=$HOME/go # Go Workspaces
+export PATH=$PATH:$GOPATH/bin # Add Go bins to PATH for installed golang-programms
