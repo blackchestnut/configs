@@ -68,8 +68,8 @@ cd_projects() {
 alias pr=cd_projects
 
 # My Servers
-alias linode='ssh deploy@mybudget.ws'
-alias linode2='ssh deploy@173.255.204.93'
+alias linode_0='ssh deploy@178.79.173.247'
+alias linode_agile='ssh deploy@173.255.204.93'
 alias shikimori='ssh devops@78.46.50.20'
 
 # Git
