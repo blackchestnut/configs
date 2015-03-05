@@ -115,7 +115,7 @@ alias f=myfind
 #alias fvim="mvim \`myfind $1\`"
 
 fgrep_rails_proj() {
-  fgrep -i -r $1 **/*.{rb,slim,sass,coffee}
+  fgrep -i -r $1 **/*.{rb,slim,erb,sass,coffee}
 }
 alias ff=fgrep_rails_proj
 
