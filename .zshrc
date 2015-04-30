@@ -52,6 +52,7 @@ export BACKUP_DROPBOX_API_KEY='...' # Dropbox App for backups
 export BACKUP_DROPBOX_API_SECRET='...' # Dropbox App for backups
 export GOPATH=$HOME/go # Go Workspaces
 export PATH=$PATH:$GOPATH/bin # Add Go bins to PATH for installed golang-programms
+export BUNDLER_EDITOR='mvim' # For $ bundle open gem_name
 
 # My projects
 RALSPROJECTS="~/projects"
