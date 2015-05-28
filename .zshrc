@@ -42,19 +42,29 @@ TERM="xterm-256color"
 
 source $ZSH/oh-my-zsh.sh
 
+#-----------------------------------------------------------------------------------------
+# Environment variables
+#-----------------------------------------------------------------------------------------
+
 #export CC=clang
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/share/npm/bin
-#export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/bin:$PATH
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export GITHUB_CLIENT_ID='...' # Agile Season App
 export GITHUB_CLIENT_SECRET='...' # Agile Season App
+export S3_BUCKET_NAME='...'                        # Agile Season S3 Storage (development)
+export AWS_ACCESS_KEY_ID='...'                         #
+export AWS_SECRET_ACCESS_KEY='...' #
 export BACKUP_DROPBOX_API_KEY='...' # Dropbox App for backups
 export BACKUP_DROPBOX_API_SECRET='...' # Dropbox App for backups
 export GOPATH=$HOME/go # Go Workspaces
 export PATH=$PATH:$GOPATH/bin # Add Go bins to PATH for installed golang-programms
 export BUNDLER_EDITOR='mvim' # For $ bundle open gem_name
 
-# My projects
+#-----------------------------------------------------------------------------------------
+# cd ~/my_projects
+#-----------------------------------------------------------------------------------------
+
 RALSPROJECTS="~/projects"
 alias news="cd $RALSPROJECTS/news25km"
 alias mybudget="cd $RALSPROJECTS/mybudget"
@@ -62,37 +72,52 @@ alias my=mybudget
 alias shi="cd $RALSPROJECTS/shikimori.org/shikimori"
 alias vi="cd $RALSPROJECTS/vimocean"
 alias ag="cd $RALSPROJECTS/agileseason"
+alias tt="cd $RALSPROJECTS/trantoria"
 alias mygo="cd $GOPATH/src/github.com/blackchestnut"
 cd_projects() {
   cd ~/projects/$1
 }
 alias pr=cd_projects
 
-# My Servers
+#-----------------------------------------------------------------------------------------
+# ssh
+#-----------------------------------------------------------------------------------------
+
 alias linode_0='ssh deploy@178.79.173.247'
 alias linode_agile='ssh deploy@173.255.204.93'
 alias shikimori='ssh devops@78.46.50.20'
 
+#-----------------------------------------------------------------------------------------
 # Git
+#-----------------------------------------------------------------------------------------
+
 alias g='git status'
 alias gd='git diff head --color'
-alias finalize='git rebase --interactive --autosquash develop'
-#alias gl='git log --pretty=format:"%Cred%h%Creset %ad | %s%d [%an]" --graph --date=short'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s - %C(bold blue)%an%Creset, %Cgreen%cr' --abbrev-commit"
-alias gput="git push origin HEAD"
-alias gu="git-up" # https://github.com/aanand/git-up
+alias gu='git-up' # https://github.com/aanand/git-up
+alias gp='git push'
 git_commit_m() {
   git add -A && git commit -m "$1"
 }
 alias gcm=git_commit_m
 
+
+#-----------------------------------------------------------------------------------------
 # Rails
+#-----------------------------------------------------------------------------------------
+
 alias r='rails'
-alias migrate='rake db:migrate && rake db:migrate RAILS_ENV=test'
-alias rollback='rake db:rollback && rake db:rollback RAILS_ENV=test'
-alias deploy='cap deploy'
+alias rs='rails server'
+alias rc='rails console'
+alias rdb='rails dbconsole'
+alias migrate='rake db:migrate && RAILS_ENV=test rake db:migrate'
+alias rollback='rake db:rollback && rake RAILS_ENV=test db:rollback'
 alias pdeploy='cap production deploy'
-alias linode='ssh deploy@mybudget.ws'
+alias deploy=pdeploy
+
+#-----------------------------------------------------------------------------------------
+# Process
+#-----------------------------------------------------------------------------------------
 
 fpath=(path/to/zsh-completions/src $fpath)
 zstyle ':completion:*:processes' command 'ps -ax'
@@ -104,26 +129,39 @@ zstyle ':completion:*:processes-names' command 'ps -e -o comm='
 zstyle ':completion:*:*:killall:*' menu yes select
 zstyle ':completion:*:killall:*'   force-list always
 
-alias psf='ps aux|grep $1'
-alias ll='ls -la'
-alias l='ls -a'
-alias files='find . -maxdepth 1 -type f | wc -l'
-
-myfind() {
-  find . -type f \( -name "*.rb" -or -name "*.erb" -or -name "*.rss" -or -name "*.xml" -or -name "*.slim" -or -name "*.haml" -or -name "*.js" -or -name "*.coffee" -or -name "*.ejs" -or -name "*.jst" -or -name "*.eco" -or -name "*.css" -or -name "*.scss" -or -name "*.yml" -or -name "*.vim" -or -name "*.rabl" -or -name "*.builder"  -or -name "*.txt" \)  -exec grep -l "$1" {} \;
-}
-alias f=myfind
-#alias fvim="mvim \`myfind $1\`"
-
-fgrep_rails_proj() {
-  fgrep -i -r $1 **/*.{rb,slim,erb,sass,coffee}
-}
-alias ff=fgrep_rails_proj
+alias psg="ps aux|grep $1"
+alias psx="ps aux|grep $1"
 
 port_lock() {
   lsof -i tcp:$1
 }
 alias plock=port_lock
 
-rvm use default
-#EDITOR=/usr/local/Cellar/macvim/7.3-65/MacVim.app/Contents/MacOS/MacVim
+#-----------------------------------------------------------------------------------------
+# ls
+#-----------------------------------------------------------------------------------------
+
+alias ll='ls -la'
+alias l='ls -a'
+
+#-----------------------------------------------------------------------------------------
+# Files
+#-----------------------------------------------------------------------------------------
+
+find_files() {
+  find . -type f \( -name "*.rb" -or -name "*.erb" -or -name "*.rss" -or -name "*.xml" -or -name "*.slim" -or -name "*.haml" -or -name "*.js" -or -name "*.coffee" -or -name "*.ejs" -or -name "*.jst" -or -name "*.eco" -or -name "*.css" -or -name "*.scss" -or -name "*.yml" -or -name "*.vim" -or -name "*.rabl" -or -name "*.builder"  -or -name "*.txt" \)  -exec grep -l "$1" {} \;
+}
+alias ff=find_files
+
+fgrep_all() {
+  fgrep -i -r $1 **/
+}
+fgrep_ext() {
+  fgrep -i -r $1 **/*.$2
+}
+fgrep_r() {
+  fgrep -i -r $1 **/*.{rb,slim,erb,sass,coffee}
+}
+alias f=fgrep_r
+alias fx=fgrep_ext
+alias fa=fgrep_all
