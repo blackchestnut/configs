@@ -158,13 +158,13 @@ find_files() {
 alias ff=find_files
 
 fgrep_all() {
-  fgrep -i -r $1 **/ | grep --color $1
+  fgrep -i -r --color $1 **/
 }
 fgrep_ext() {
-  fgrep -i -r $1 **/*.$2 | grep --color $1
+  fgrep -i -r --color $1 **/*.$2
 }
 fgrep_r() {
-  fgrep -i -r $1 **/*.{rb,slim,erb,sass,coffee} | grep --color $1
+  fgrep -i -r --color $1 **/*.{rb,slim,erb,sass,coffee}
 }
 alias f=fgrep_r
 alias fx=fgrep_ext
