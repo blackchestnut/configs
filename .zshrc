@@ -97,6 +97,9 @@ alias gdh="git diff head~1 --color"
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s - %C(bold blue)%an%Creset, %Cgreen%cr' --abbrev-commit"
 alias gu='git-up' # https://github.com/aanand/git-up
 alias gp='git push'
+alias gb="git checkout -b $1"
+alias ga='git add -A'
+alias gc="git commit -m $1"
 alias master='git checkout master'
 alias develop='git checkout develop'
 
